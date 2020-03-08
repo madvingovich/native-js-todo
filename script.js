@@ -121,23 +121,38 @@
     }
 
     function filterAllItems() {
-        state.isFilterable = false
-        state.activeFilter = null
-        state.filtratedTodos = []
+        const newStateFilterInfo = {
+            isFilterable: false,
+            activeFilter: null,
+            filtratedTodos: []
+        }
+
+        updateState(newStateFilterInfo)
+
         selectors.filterAllButton.classList.add('active')
     }
 
     function filterActiveItems() {
-        state.isFilterable = true
-        state.activeFilter = 'active'
-        state.filtratedTodos = state.todos.filter(todo => !todo.isDone)
+        const newStateFilterInfo = {
+            isFilterable: true,
+            activeFilter: 'active',
+            filtratedTodos: state.todos.filter(todo => !todo.isDone)
+        }
+
+        updateState(newStateFilterInfo)
+
         selectors.filterActiveButton.classList.add('active')
     }
 
     function filterCompletedItems() {
-        state.isFilterable = true
-        state.activeFilter = 'completed'
-        state.filtratedTodos = state.todos.filter(todo => todo.isDone)
+        const newStateFilterInfo = {
+            isFilterable: true,
+            activeFilter: 'completed',
+            filtratedTodos: state.todos.filter(todo => todo.isDone)
+        }
+
+        updateState(newStateFilterInfo)
+
         selectors.filterCompletedButton.classList.add('active')
     }
 
@@ -355,8 +370,18 @@
         return removeButton
     }
 
+    function updateState(newState) {
+        state = {
+            ...state,
+            ...newState
+        }
+    }
+
     function updateTodos(newTodos) {
-        state.todos = newTodos
+        state = {
+            ...state,
+            todos: newTodos
+        }
 
         if(state.isFilterable) {
             updateFiltratedItems()
@@ -374,11 +399,12 @@
     }
 
     function getTodosInfo() {
-        const todosCount = state.todos.length,
-        todosDone = state.todos.reduce((prev, todo) => {
-            return prev + (todo.isDone ? 1 : 0)
-        }, 0),
-        todosToDo = todosCount - todosDone
+        const 
+            todosCount = state.todos.length,
+            todosDone = state.todos.reduce((prev, todo) => {
+                return prev + (todo.isDone ? 1 : 0)
+            }, 0),
+            todosToDo = todosCount - todosDone
 
         return {
             todosCount,
