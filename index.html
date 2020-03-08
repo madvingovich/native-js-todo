@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clean To Do</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="todos">
+        <h1 class="text-center">TODO</h1>
+        <div class="todos_wrap">
+            <div class="todo_info">
+                <p class="todo_count">
+                    <span>Todos: </span>
+                    <span></span>
+                </p>
+                <p class="todo_to_do">
+                    <span>To do: </span>
+                    <span></span>
+                </p>
+                <p class="todo_done_count">
+                    <span>Done: </span>
+                    <span></span>
+                </p>
+            </div>
+            <form action="#" class="todos_create">
+                <input type="text" placeholder="What do you want to do ?" class="todos_create_input">
+                <button type="submit">Create</button>
+            </form>
+            <h2>You are free to create some tasks</h2>
+            <div class="todos_items"></div>
+            <div class="filter">
+                <button class="filter_all active">All [ <span></span> ]</button>
+                <button class="filter_active">Active [ <span></span> ]</button>
+                <button class="filter_completed">Completed [ <span></span> ]</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
