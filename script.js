@@ -271,7 +271,7 @@
     }
 
     function createTodoItems() {
-        let todoItemsBox = document.createElement('div')
+        let todosWrapper = document.createElement('div')
 
         const currentTodos = state.isFilterable ? state.filtratedTodos : state.todos
 
@@ -298,10 +298,10 @@
                 itemBox.appendChild(editInput)
             }
 
-            todoItemsBox.appendChild(itemBox)
+            todosWrapper.appendChild(itemBox)
         }
 
-        return todoItemsBox
+        return todosWrapper
     }
 
     function createCheckbox(id, checked) {
