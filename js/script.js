@@ -104,8 +104,7 @@
 				editItemButton = create.editButton(id),
 				removeItemButton = create.removeButton(id);
 
-			buttonsBox.appendChild(editItemButton);
-			buttonsBox.appendChild(removeItemButton);
+            buttonsBox.append(editItemButton, removeItemButton)
 
 			return buttonsBox;
 		}
@@ -158,9 +157,7 @@
 				itemTextContent = create.todoTextItem(title, isDone),
 				itemButtons = create.todoItemButtons(id);
 
-			itemBox.appendChild(isDoneCheckbox);
-			itemBox.appendChild(itemTextContent);
-			itemBox.appendChild(itemButtons);
+            itemBox.append(isDoneCheckbox, itemTextContent, itemButtons)
 
 			if (isEditing) {
 				editInput.id = id;
